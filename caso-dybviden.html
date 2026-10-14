@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es-AR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dybviden: motor propio para 17 tests en danés — Leonel Zalazar</title>
+<meta name="description" content="Caso de estudio: experiencia tipo app para 17 tests psicológicos y de habilidades en danés, con un motor propio en JavaScript, decisiones basadas en el uso real y resultados responsables.">
+<link rel="canonical" href="https://leonelzalazar912.github.io/caso-dybviden.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://leonelzalazar912.github.io/caso-dybviden.html">
+<meta property="og:title" content="Dybviden: un motor propio para 17 tests en danés">
+<meta property="og:description" content="Experiencia tipo app, decisiones con datos de uso real y resultados que nunca son un diagnóstico.">
+<meta property="og:image" content="https://leonelzalazar912.github.io/img/cmp/dyb-portada-despues.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="827">
+<meta name="theme-color" content="#221D18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D18'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23D9AE64'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="caso.css">
+<style>
+  .engine{ display:grid; grid-template-columns:1fr 1.1fr; gap:28px; align-items:start; margin-top:22px; }
+  @media (max-width:860px){ .engine{ grid-template-columns:1fr; } }
+  .types{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .types li{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow); font-size:.9rem; color:var(--ink-soft); }
+  .types li b{ display:flex; align-items:baseline; gap:8px; color:var(--ink); font-family:"Fraunces",serif; font-size:1.05rem; margin-bottom:4px; }
+  .types li b span{ font-family:"IBM Plex Mono",monospace; font-size:.7rem; font-weight:600; color:var(--gold-deep); background:var(--gold-soft); border-radius:20px; padding:2px 8px; }
+  .engine .cmp{ margin-top:0; }
+  .eng-shot{ border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#F5F3EE; aspect-ratio:776/782; max-width:520px; margin-inline:auto; box-shadow:var(--shadow-lg); }
+  .eng-shot img{ display:block; width:100%; height:100%; object-fit:cover; object-position:top; color:transparent; }
+
+  .usage{ display:grid; gap:9px; margin-top:12px; }
+  .usage div{ display:grid; grid-template-columns:110px 1fr 38px; gap:10px; align-items:center; font-size:.84rem; color:var(--ink-soft); }
+  .usage i{ display:block; height:8px; border-radius:4px; background:var(--gold); }
+  .usage em{ font-style:normal; font-variant-numeric:tabular-nums; color:var(--ink); text-align:right; }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">Leonel Zalazar</a>
+  <a href="index.html#caso-dybviden">← Volver al portfolio</a>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Caso de estudio · Experiencia interactiva · Mercado danés</div>
+    <h1>Dybviden: un motor propio para 17 tests en danés</h1>
+    <p class="lede">Un sitio de tests psicológicos y de habilidades que tuvo usuarios reales en Dinamarca. Lo convertí en una <b>experiencia tipo app</b>: una pregunta por pantalla, resultados claros y un criterio responsable en temas de salud.</p>
+    <dl class="ficha">
+      <div><dt>Mi rol</dt><dd>Producto, diseño, desarrollo y contenido</dd></div>
+      <div><dt>Tiempo</dt><dd>4 etapas, del diagnóstico a la publicación</dd></div>
+      <div><dt>Tecnología</dt><dd>WordPress, PHP, JavaScript, JSON-LD</dd></div>
+      <div><dt>Estado</dt><dd>En vivo como copia de portfolio</dd></div>
+    </dl>
+    <div class="hero-cta">
+      <a class="btn primary" href="https://dybviden.netlify.app/" target="_blank" rel="noopener">Probar los tests en vivo →</a>
+      <a class="btn ghost" href="#motor">Ver el motor de tests</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<div class="wrap">
+  <div class="stats" role="list">
+    <div role="listitem"><b>17</b><span>tests con un solo motor propio</span></div>
+    <div role="listitem"><b>577</b><span>tests completados por usuarios reales en su último año online</span></div>
+    <div role="listitem"><b>3</b><span>tipos de resultado: clínico, perfil y conocimiento</span></div>
+    <div role="listitem"><b>100</b><span>en accesibilidad (Lighthouse)</span></div>
+  </div>
+</div>
+
+<nav class="toc" aria-label="En esta página" style="margin-top:34px;"><div class="wrap"><ol>
+  <li><a href="#problema"><span>01</span>Problema</a></li>
+  <li><a href="#contexto"><span>02</span>Contexto</a></li>
+  <li><a href="#rol"><span>03</span>Mi rol</a></li>
+  <li><a href="#decisiones"><span>04</span>Decisiones</a></li>
+  <li><a href="#motor"><span>05</span>El motor de tests</a></li>
+  <li><a href="#criterio"><span>06</span>Datos y criterio</a></li>
+  <li><a href="#proceso"><span>07</span>Proceso</a></li>
+  <li><a href="#antes-despues"><span>08</span>Antes y después</a></li>
+  <li><a href="#resultados"><span>09</span>Resultados</a></li>
+  <li><a href="#stack"><span>10</span>Stack</a></li>
+</ol></div></nav>
+
+<div class="wrap">
+
+<section id="problema">
+  <div class="num">01 · El problema</div>
+  <div class="prose">
+    <h2>Tests con buen tráfico, pero con experiencia de documento</h2>
+    <p>Los tests funcionaban y la gente los completaba, pero se veían como un formulario dentro de una página de texto: instrucciones largas con emojis, todas las preguntas juntas y el aspecto de un plugin genérico.</p>
+    <p>Además, el tema era delicado. Varios tests tratan sobre salud mental, y algunos resultados sonaban a diagnóstico. <b>El objetivo:</b> que hacer un test se sienta como usar una app, sin dejar de ser responsable con lo que se le dice a la persona.</p>
+  </div>
+</section>
+
+<section id="contexto">
+  <div class="num">02 · Contexto</div>
+  <div class="prose">
+    <h2>Lo que había adentro</h2>
+    <ul>
+      <li><b>17 tests en danés:</b> 9 de salud mental, el perfil de personalidad DISC (100 afirmaciones) y 7 de conocimiento: inteligencia, cinco idiomas y memoria.</li>
+      <li><b>Preguntas y respuestas guardadas en las tablas de un plugin</b> de cuestionarios.</li>
+      <li><b>Uso real:</b> 577 tests completados por 389 personas en su último año online.</li>
+      <li>URLs <code>/test/&lt;nombre&gt;/</code> que había que conservar.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="rol">
+  <div class="num">03 · Mi rol</div>
+  <div class="prose">
+    <h2>Producto, código y contenido</h2>
+    <p class="soft">Trabajé solo, con Claude Code como asistente de programación. Las decisiones, el diseño y la revisión de cada etapa fueron míos.</p>
+  </div>
+  <div class="roles">
+    <div><b>Producto y experiencia</b>Tres conceptos jugables para elegir la dirección, y el flujo de cada tipo de test.</div>
+    <div><b>Desarrollo</b>Tema propio, motor de tests en JavaScript y SEO hecho a mano, sin plugin.</div>
+    <div><b>Contenido y criterio</b>Textos de resultado, lenguaje no clínico y líneas de ayuda verificadas.</div>
+  </div>
+</section>
+
+<section id="decisiones">
+  <div class="num">04 · Decisiones técnicas</div>
+  <div class="prose">
+    <h2>Qué elegí y por qué</h2>
+  </div>
+  <div class="decisions">
+    <article class="dec">
+      <span class="tag">Producto</span>
+      <h3>Tres conceptos jugables antes de elegir</h3>
+      <p>Armé un prototipo con tres experiencias que se podían probar: calma nórdica, formato de chat y tarjetas tipo historias. Se eligió la primera, «Nordisk ro»: sobria, clara y apropiada para temas de salud.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Arquitectura</span>
+      <h3>Motor propio sobre los datos existentes</h3>
+      <p>El tema lee las tablas del plugin y arma un JSON por test. Las preguntas no se reescribieron ni se migraron: el motor nuevo usa lo que ya estaba.</p>
+      <p class="alt"><b>Descarté</b>Seguir con la presentación del plugin: no permitía la experiencia de una pregunta por pantalla.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Interfaz</span>
+      <h3>Un motor, tres tipos de test</h3>
+      <p>El mismo código resuelve escalas clínicas, el perfil DISC y tests con respuestas correctas, con preguntas de opción, escritas o sobre imágenes.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Publicación</span>
+      <h3>El test viaja dentro de la página</h3>
+      <p>Cada página trae su test embebido. Así el sitio funciona como HTML estático, sin servidor ni archivos extra.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">SEO</span>
+      <h3>SEO hecho a mano, sin plugin</h3>
+      <p>Títulos, descripciones, Open Graph en danés, datos estructurados (sitio, página, migas y lista de tests) y el sitemap nativo de WordPress. Las migas visibles coinciden con las de los datos estructurados.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Accesibilidad</span>
+      <h3>Cómodo con teclado y en celular</h3>
+      <p>Respuestas con las teclas 1 a 9, botón para volver, progreso guardado si se recarga la página y animaciones que respetan la opción «reducir movimiento».</p>
+    </article>
+  </div>
+</section>
+
+<section id="motor">
+  <div class="num">05 · El motor de tests</div>
+  <div class="prose">
+    <h2>Tres tipos de test, una sola experiencia</h2>
+    <p class="soft">Capturas del sitio en vivo.</p>
+  </div>
+  <div class="engine">
+    <ul class="types">
+      <li><b>Salud mental <span>9 tests</span></b>Escala con medidor, el rango en el que caés, qué podés hacer y dónde pedir ayuda.</li>
+      <li><b>Perfil DISC <span>100 afirmaciones</span></b>Tu estilo dominante y el secundario, con barras por dimensión normalizadas: cada una tiene distinta cantidad de preguntas.</li>
+      <li><b>Conocimiento <span>7 tests</span></b>Inteligencia, idiomas y memoria. Respuestas de opción o escritas, una imagen para memorizar durante 20 segundos con cuenta regresiva, repaso de las respuestas correctas y botón para compartir el resultado.</li>
+    </ul>
+    <div class="cmp">
+      <div class="tabs" role="tablist" aria-label="Capturas del motor de tests"><button type="button" role="tab" id="t-0" aria-controls="p-0" aria-selected="true" tabindex="0">Pregunta</button><button type="button" role="tab" id="t-1" aria-controls="p-1" aria-selected="false" tabindex="-1">Resultado clínico</button><button type="button" role="tab" id="t-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Perfil DISC</button><button type="button" role="tab" id="t-3" aria-controls="p-3" aria-selected="false" tabindex="-1">Memoria</button><button type="button" role="tab" id="t-4" aria-controls="p-4" aria-selected="false" tabindex="-1">Respuesta escrita</button></div>
+      <div class="cmp-panel" role="tabpanel" id="p-0" aria-labelledby="t-0"><div class="eng-shot"><img src="img/casos/dy-pregunta.webp" alt="Pregunta del test de ansiedad: una pregunta por pantalla, barra de progreso y cuatro opciones numeradas"></div><p class="cap">Una pregunta por pantalla, con progreso y opciones numeradas para el teclado</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-1" aria-labelledby="t-1" hidden><div class="eng-shot"><img loading="lazy" src="img/casos/dy-resultado-clinico.webp" alt="Resultado del test de ansiedad: medidor de 10 sobre 21 puntos, rango y recomendaciones"></div><p class="cap">Resultado clínico: medidor, rango y qué hacer. Nunca un diagnóstico</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-2" aria-labelledby="t-2" hidden><div class="eng-shot"><img loading="lazy" src="img/casos/dy-disc.webp" alt="Resultado del perfil DISC: estilo dominante y barras por dimensión"></div><p class="cap">Perfil DISC: estilo dominante, secundario y barras por dimensión</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-3" aria-labelledby="t-3" hidden><div class="eng-shot"><img loading="lazy" src="img/casos/dy-memoria.webp" alt="Test de memoria: imagen para mirar con cuenta regresiva de 20 segundos"></div><p class="cap">Memoria: la imagen se ve 20 segundos y después llegan las preguntas</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-4" aria-labelledby="t-4" hidden><div class="eng-shot"><img loading="lazy" src="img/casos/dy-escrita.webp" alt="Test de inteligencia: pregunta con imagen y respuesta escrita"></div><p class="cap">Inteligencia: preguntas con imagen y respuesta escrita</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="criterio">
+  <div class="num">06 · Decisiones con datos y con criterio</div>
+  <div class="prose">
+    <h2>Lo que decidí mirando el uso real y a quién le habla el sitio</h2>
+  </div>
+  <div class="bugs">
+    <div class="bug"><div><h3>Dato</h3><p><b>Uso real del último año:</b> 577 tests de 389 personas.</p>
+      <div class="usage" aria-label="Tests más completados">
+        <div><span>DISC</span><i style="width:100%"></i><em>115</em></div>
+        <div><span>Demencia</span><i style="width:66%"></i><em>76</em></div>
+        <div><span>Psicopatía</span><i style="width:59%"></i><em>68</em></div>
+        <div><span>Inteligencia</span><i style="width:42%"></i><em>48</em></div>
+      </div></div><div><h3>Decisión</h3><p>La sección <b>«Más populares»</b> de la portada muestra esos cuatro tests, en ese orden. Lo que se destaca sale de los datos, no de una intuición.</p></div></div>
+    <div class="bug"><div><h3>Situación</h3><p><b>Algunos resultados de salud mental sonaban a diagnóstico.</b></p></div><div><h3>Decisión</h3><p>Titulares del tipo «pocas, algunas o muchas señales de…» y un aviso claro: el test es una herramienta para reflexionar, no un diagnóstico.</p></div></div>
+    <div class="bug"><div><h3>Situación</h3><p><b>Quien recibe un resultado alto puede necesitar ayuda.</b></p></div><div><h3>Decisión</h3><p>Cada test de salud mental termina con líneas de ayuda reales de Dinamarca (emergencias, Livslinien y Psykiatrifonden), con sus horarios verificados.</p></div></div>
+    <div class="bug"><div><h3>Situación</h3><p><b>El test de ansiedad estaba basado en una escala con derechos de autor.</b></p></div><div><h3>Decisión</h3><p>Lo reemplacé por el <b>GAD-7</b> oficial en danés, de uso libre, con sus rangos estándar y crédito a los autores.</p></div></div>
+    <div class="bug"><div><h3>Situación</h3><p><b>Los cinco tests de idiomas no tenían texto de resultado.</b></p></div><div><h3>Decisión</h3><p>Escribí cuatro niveles basados en el marco europeo (de A1 a B2 o más), con consejos para cada uno.</p></div></div>
+    <div class="bug"><div><h3>Situación</h3><p><b>El sitio se monetizaba con anuncios.</b></p></div><div><h3>Decisión</h3><p>Los espacios de anuncio van debajo del test, <b>nunca entre preguntas</b>: la experiencia no se corta.</p></div></div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="num">07 · Proceso</div>
+  <div class="prose">
+    <h2>Por etapas, con copia de seguridad antes de cada una</h2>
+    <ol class="timeline">
+      <li><span class="dot">1</span><b>Diagnóstico sin tocar nada</b><span class="t">Los 17 tests, las tablas del plugin, el SEO y los datos de uso real.</span></li>
+      <li><span class="dot">2</span><b>Tres conceptos jugables</b><span class="t">Se eligió «Nordisk ro» y un motor propio que funcione como sitio estático.</span></li>
+      <li><span class="dot">3</span><b>Tema y motor para los tests de salud</b><span class="t">Una pregunta por pantalla, resultados con medidor y ayuda en cada test.</span></li>
+      <li><span class="dot">4</span><b>DISC, inteligencia, idiomas y memoria</b><span class="t">Respuestas escritas, imágenes, cuenta regresiva, perfil en barras y compartir.</span></li>
+      <li><span class="dot">5</span><b>SEO, portada e índice</b><span class="t">SEO sin plugin, portada con los más usados, índice de tests y página 404 propia.</span></li>
+      <li><span class="dot">6</span><b>GAD-7 y publicación</b><span class="t">Escala libre de derechos y exportación a HTML estático en Netlify.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="antes-despues">
+  <div class="num">08 · Antes y después</div>
+  <div class="prose">
+    <h2>Las mismas páginas, otra experiencia</h2>
+    <p class="soft">Arrastrá cada captura para comparar.</p>
+  </div>
+  <div class="cmp">
+    <div class="tabs" role="tablist" aria-label="Capturas de Dybviden"><button type="button" role="tab" id="u-0" aria-controls="q-0" aria-selected="true" tabindex="0">Portada</button><button type="button" role="tab" id="u-1" aria-controls="q-1" aria-selected="false" tabindex="-1">Un test</button><button type="button" role="tab" id="u-2" aria-controls="q-2" aria-selected="false" tabindex="-1">DISC (100 preguntas)</button><button type="button" role="tab" id="u-3" aria-controls="q-3" aria-selected="false" tabindex="-1">En celular</button></div>
+    <div class="cmp-panel" role="tabpanel" id="q-0" aria-labelledby="u-0"><div class="stage"><img loading="lazy" src="img/cmp/dyb-portada-despues.webp" alt="Portada después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/dyb-portada-antes.webp" alt="Portada antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: portada"></div><p class="cap">Portada: los tests más usados primero</p></div>
+    <div class="cmp-panel" role="tabpanel" id="q-1" aria-labelledby="u-1" hidden><div class="stage"><img loading="lazy" src="img/cmp/dyb-test-despues.webp" alt="Página del test de demencia después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/dyb-test-antes.webp" alt="Página del test de demencia antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: página de un test"></div><p class="cap">Un test: introducción breve y botón para empezar</p></div>
+    <div class="cmp-panel" role="tabpanel" id="q-2" aria-labelledby="u-2" hidden><div class="stage"><img loading="lazy" src="img/cmp/dyb-disc-despues.webp" alt="Página del test DISC después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/dyb-disc-antes.webp" alt="Página del test DISC antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: test DISC"></div><p class="cap">DISC: de un formulario largo a una afirmación por pantalla</p></div>
+    <div class="cmp-panel mob" role="tabpanel" id="q-3" aria-labelledby="u-3" hidden><div class="stage"><img loading="lazy" src="img/cmp/dyb-movil-despues.webp" alt="Un test en celular después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/dyb-movil-antes.webp" alt="Un test en celular antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: test en celular"></div><p class="cap">El mismo test en celular</p></div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="num">09 · Resultados</div>
+  <div class="prose">
+    <h2>Lo que se midió</h2>
+  </div>
+  <div class="results" style="grid-template-columns:1fr;">
+    <div class="res-box">
+      <h3>Medido</h3>
+      <ul>
+        <li><b>17 tests</b> funcionando con un solo motor propio, con <b>3 tipos de resultado</b>.</li>
+        <li><b>Las mismas URLs</b> de siempre para cada test.</li>
+        <li><b>577 tests completados por 389 personas</b> en su último año online: la base de las decisiones de la portada.</li>
+        <li><b>Sitio estático</b>, sin servidor: cada test viaja dentro de su página.</li>
+      </ul>
+      <p style="margin:18px 0 0;"><b>Lighthouse de la portada en vivo</b></p>
+      <div class="lh">
+        <div><b>90</b><span>Rendimiento en celular</span></div>
+        <div><b>98</b><span>Rendimiento en escritorio</span></div>
+        <div><b>100</b><span>Accesibilidad</span></div>
+        <div><b>100</b><span>Buenas prácticas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="num">10 · Stack</div>
+  <div class="stack-groups">
+    <div><h3>Plataforma</h3><div class="stack"><span>WordPress</span><span>PHP</span><span>MySQL</span><span>JSON-LD</span></div></div>
+    <div><h3>Interfaz</h3><div class="stack"><span>JavaScript</span><span>SVG</span><span>CSS</span><span>Web Share API</span></div></div>
+    <div><h3>Herramientas</h3><div class="stack"><span>WP-CLI</span><span>Lighthouse</span><span>Netlify</span><span>Claude Code</span></div></div>
+  </div>
+</section>
+
+<div class="cta">
+  <div>
+    <h2>¿Necesitás una herramienta interactiva para tu sitio?</h2>
+    <p>Tests, calculadoras, cotizadores o formularios por pasos que la gente quiera completar.</p>
+  </div>
+  <div class="hero-cta">
+    <a class="btn primary" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20caso%20de%20Dybviden.%20Me%20interesa%20una%20herramienta%20interactiva%20para%20mi%20sitio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Escribime por WhatsApp</a>
+    <a class="btn ghost" href="https://dybviden.netlify.app/" target="_blank" rel="noopener">Probar los tests</a>
+  </div>
+</div>
+
+<nav class="next-case" aria-label="Más casos">
+  <a href="caso-cerrajeros.html">← Caso anterior: Cerrajeros Cerca de Mí</a>
+  <a href="caso-drivecalmly.html">Siguiente caso: Drivecalmly →</a>
+</nav>
+</div>
+</main>
+
+<footer class="end"><div class="wrap">Leonel Zalazar — Desarrollo web &amp; SEO técnico · Tucumán, Argentina</div></footer>
+<script src="caso.js" defer></script>
+</body></html>

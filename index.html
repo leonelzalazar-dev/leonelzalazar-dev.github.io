@@ -19,12 +19,14 @@
 <title>Leonel Zalazar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     --paper:#F5EFE2; --panel:#FDFBF6; --panel-2:#F9F3E6; --panel-dark:#221D18; --panel-dark-2:#2B2621;
     --ink:#2B2621; --ink-soft:#5B534A; --line:#DFD1AE;
-    --gold:#B8873F; --gold-deep:#8C6A2E; --gold-soft:#EADFC0; --gold-bright:#D9AE64;
+    --gold:#B8873F; --gold-deep:#795A20; --gold-soft:#EADFC0; --gold-bright:#D9AE64;
     --on-dark:#F5EFE2; --on-dark-soft:#C2B199;
     --shadow: 0 1px 2px rgba(43,38,33,.06), 0 8px 22px -10px rgba(43,38,33,.14);
     --shadow-lg: 0 4px 8px rgba(43,38,33,.08), 0 24px 48px -18px rgba(43,38,33,.24);
@@ -83,8 +85,15 @@
   .navlinks{ display:flex; gap:28px; font-size:.92rem; flex-wrap:wrap; }
   .navlinks a{ color:var(--ink-soft); text-decoration:none; font-weight:500; white-space:nowrap; }
   .navlinks a:hover{color:var(--gold-deep);}
-  @media (max-width:680px){ .navlinks{gap:16px; font-size:.82rem;} }
-  @media (max-width:420px){ nav.top .wrap{justify-content:center; text-align:center;} .navlinks{gap:12px 14px; justify-content:center;} }
+  @media (max-width:680px){
+    /* En celular, una sola fila deslizable en vez de envolver en 2-3 líneas (ocupaba demasiado alto fijo) */
+    nav.top .wrap{ flex-wrap:nowrap; justify-content:flex-start; padding-block:12px; }
+    .navlinks{
+      flex-wrap:nowrap; gap:18px; font-size:.82rem; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; -ms-overflow-style:none; mask-image:linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    }
+    .navlinks::-webkit-scrollbar{ display:none; }
+  }
 
   /* -------- HERO -------- */
   header.hero{ background:var(--panel-dark); color:var(--on-dark); border-bottom:3px solid var(--gold); position:relative; overflow:hidden; }
@@ -130,6 +139,31 @@
   .fact .n{ font-family:"Fraunces",serif; font-weight:700; font-size:1.5rem; color:var(--gold-deep); line-height:1; }
   .fact .c{ font-size:.85rem; color:var(--ink-soft); margin-top:4px; }
 
+  /* -------- SERVICIOS -------- */
+  #servicios{ border-top:1px solid var(--line); }
+  .svc-intro{ color:var(--ink-soft); max-width:40em; margin:0 0 34px; }
+  .svc-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:22px; }
+  .svc{
+    grid-column:span 2; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 24px 24px; box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .svc:nth-child(n+4){ grid-column:span 3; }
+  @media (max-width:900px){ .svc-grid{grid-template-columns:1fr 1fr;} .svc, .svc:nth-child(n+4){grid-column:auto;} .svc:last-child{grid-column:1 / -1;} }
+  @media (max-width:620px){ .svc-grid{grid-template-columns:1fr;} }
+  .svc .ic{ width:44px; height:44px; border-radius:12px; background:var(--gold-soft); color:var(--gold-deep); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+  .svc .ic svg{ width:24px; height:24px; }
+  .svc h3{ font-family:"Fraunces",serif; font-weight:700; font-size:1.22rem; line-height:1.2; margin:0 0 8px; }
+  .svc p{ font-size:.93rem; color:var(--ink-soft); margin:0 0 14px; }
+  .svc ul{ font-size:.88rem; margin:0 0 20px; padding-left:1.1em; }
+  .svc li{ margin-bottom:5px; }
+  .btn-wa{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px; align-self:flex-start; margin-top:auto;
+    font-weight:600; font-size:.92rem; padding:11px 18px; border-radius:10px; text-decoration:none;
+    background:var(--gold); color:#241C0F; transition:transform .15s ease;
+  }
+  .btn-wa:hover{ transform:translateY(-1px); }
+  .btn-wa svg{ width:18px; height:18px; flex:none; }
+
   /* -------- SKILLS -------- */
   .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
   @media (max-width:800px){ .skill-groups{grid-template-columns:1fr;} }
@@ -144,7 +178,7 @@
     display:flex; align-items:center; justify-content:center; font-family:"Fraunces",serif;
     font-weight:700; font-size:1.05rem; margin-bottom:16px;
   }
-  .skill-card h4{ font-family:"Fraunces",serif; font-weight:700; font-size:1.1rem; margin:0 0 4px; color:var(--ink); }
+  .skill-card h3{ font-family:"Fraunces",serif; font-weight:700; font-size:1.1rem; margin:0 0 4px; color:var(--ink); }
   .skill-card .sub{ font-size:.82rem; color:var(--ink-soft); margin-bottom:16px; }
   .skill-card .chips{display:flex; flex-wrap:wrap; gap:8px;}
   .skill-card .chip{ font-size:.83rem; background:var(--panel-2); border:1px solid var(--line); border-radius:20px; padding:6px 13px; }
@@ -236,7 +270,7 @@
   .case-fig b{ display:block; font-family:"Fraunces",serif; font-weight:700; font-size:2.1rem; line-height:1; color:var(--gold-deep); font-variant-numeric:tabular-nums; }
   .case-fig span{ display:block; font-size:.8rem; color:var(--ink-soft); line-height:1.35; margin-top:4px; }
   @media (max-width:640px){ .case-side{ align-items:flex-start; } .case-fig{ text-align:left; } }
-  .nf{ background:var(--panel); border:1px solid var(--line); border-top:4px solid #e0344a; border-radius:var(--radius); box-shadow:var(--shadow-lg); padding:28px 28px 24px; margin-bottom:34px; --accent:#e0344a; }
+  .nf{ background:var(--panel); border:1px solid var(--line); border-top:4px solid #c62b3f; border-radius:var(--radius); box-shadow:var(--shadow-lg); padding:28px 28px 24px; margin-bottom:34px; --accent:#c62b3f; }
   .nf-head{ display:grid; grid-template-columns:1fr 280px; gap:30px; align-items:start; margin-bottom:22px; }
   .nf .ctx{ font-family:"IBM Plex Mono",monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--gold-deep); margin-bottom:6px; }
   .nf h3{ font-family:"Fraunces",serif; font-size:1.9rem; margin:0 0 10px; }
@@ -249,6 +283,8 @@
   .nf-shot img{ display:block; width:100%; height:100%; object-fit:cover; color:transparent; }
   .stage img{ color:transparent; }
   .nf .tabs button[aria-selected="true"]{ color:#fff; }
+  /* Drivecalmly: su verde oscuro no da suficiente contraste con el texto oscuro de la pestaña activa (WCAG AA) */
+  #caso-drivecalmly .tabs button[aria-selected="true"]{ color:#fff; }
   .nf-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:28px; margin-top:24px; }
   .nf-col h4{ font-family:"IBM Plex Mono",monospace; font-size:.74rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-deep); margin:0 0 10px; }
   .nf-col h4 + ul, .nf-col .nf-chat{ margin-bottom:20px; }
@@ -260,6 +296,7 @@
   .nf-chat .ai{ background:rgba(255,255,255,.05); color:var(--on-dark-soft); max-width:92%; }
   .nf-chat code{ font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--gold-bright); }
   .nf .stack2{ margin:18px 0 0; }
+  .nf .live{ display:inline-block; margin-top:16px; font-weight:600; font-size:.92rem; color:var(--gold-deep); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:1px; }
   .nf .note{ display:block; margin-top:10px; font-size:.82rem; color:var(--ink-soft); font-style:italic; }
   @media (max-width:860px){ .nf-head,.nf-grid{ grid-template-columns:1fr; } .nf{ padding:22px 18px; } }
   .rec-note{ margin-top:22px; font-size:.85rem; color:var(--ink-soft); max-width:46em; }
@@ -293,6 +330,7 @@
     <a href="#inicio" class="brand">Leonel Zalazar</a>
     <div class="navlinks">
       <a href="#sobre">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
       <a href="#recuperados">Sitios recuperados</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#habilidades">Habilidades</a>
@@ -342,6 +380,71 @@
   </div>
 </section>
 
+<section id="servicios" class="side">
+  <div class="wrap">
+    <div class="eyebrow">Servicios</div>
+    <h2 style="margin-bottom:12px;">Qué puedo hacer por tu negocio</h2>
+    <p class="svc-intro">Cada servicio tiene detrás un proyecto real que podés ver en esta página. Escribime y te digo si puedo ayudarte y cómo.</p>
+    <div class="svc-grid">
+      <article class="svc">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5-5h-15z"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Sitio web o tienda online</h3>
+        <p>Un sitio rápido y claro que muestre lo que vendés y te traiga consultas. Si vendés online, con pagos y envíos listos.</p>
+        <ul>
+          <li>Diseño propio, pensado primero para celular</li>
+          <li>Pagos con Mercado Pago, transferencia o efectivo</li>
+          <li>Panel para cargar productos y precios vos mismo</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20portfolio.%20Quiero%20un%20sitio%20web%20o%20una%20tienda%20online%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp sobre un sitio web o tienda online"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Consultar por WhatsApp</a>
+      </article>
+      <article class="svc">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+        <h3>SEO para negocios locales</h3>
+        <p>Que te encuentren en Google cuando alguien busca lo que ofrecés en tu zona.</p>
+        <ul>
+          <li>Análisis de tu competencia real en Google</li>
+          <li>Palabras clave con intención de compra</li>
+          <li>Google Business Profile, Search Console y datos estructurados</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20portfolio.%20Quiero%20que%20mi%20negocio%20aparezca%20en%20Google%20cuando%20buscan%20en%20mi%20zona." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp sobre SEO para negocios locales"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Consultar por WhatsApp</a>
+      </article>
+      <article class="svc">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/></svg></div>
+        <h3>Rediseño sin perder posiciones</h3>
+        <p>Tu sitio se ve viejo pero ya aparece en Google. Lo renuevo por completo sin tocar las direcciones que ya posicionaste.</p>
+        <ul>
+          <li>Mismas URLs, títulos y descripciones</li>
+          <li>Diseño moderno, adaptado a celular</li>
+          <li>Se conserva el contenido que ya trae visitas</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20portfolio.%20Tengo%20un%20sitio%20viejo%20y%20quiero%20renovarlo%20sin%20perder%20lo%20que%20ya%20tengo%20en%20Google." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp sobre un rediseño sin perder posiciones"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Consultar por WhatsApp</a>
+      </article>
+      <article class="svc">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+        <h3>Automatizaciones con IA</h3>
+        <p>Tareas repetitivas que hoy hacés a mano, resueltas con IA: investigar, clasificar, resumir o generar contenido.</p>
+        <ul>
+          <li>Integración con Claude (API y servidores MCP)</li>
+          <li>Costo de IA medido en cada uso, sin sorpresas</li>
+          <li>Tareas que corren solas e informes automáticos</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20portfolio.%20Me%20interesa%20automatizar%20una%20tarea%20con%20IA." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp sobre automatizaciones con IA"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Consultar por WhatsApp</a>
+      </article>
+      <article class="svc">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M9 11h6M9 15h4"/></svg></div>
+        <h3>Sistema a medida para tu negocio</h3>
+        <p>Una herramienta simple para tomar pedidos, ordenar el trabajo o llevar un registro, hecha a la medida de cómo trabajás.</p>
+        <ul>
+          <li>Pedidos con estados y comprobante imprimible</li>
+          <li>Catálogo y precios editables sin tocar código</li>
+          <li>Funciona en la computadora del local</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20portfolio.%20Necesito%20un%20sistema%20a%20medida%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp sobre un sistema a medida"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Consultar por WhatsApp</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="recuperados" class="side">
   <div class="wrap">
     <div class="eyebrow">Sitios recuperados y rediseñados</div>
@@ -370,7 +473,8 @@
         <div class="col after"><h4>Cómo quedó</h4><ul><li>Tema propio «cosmos sagrado»: partículas doradas en canvas que se pausan fuera de pantalla y respetan «reducir movimiento»</li><li>Bloques de oración automáticos con Copiar e Imprimir (212 oraciones en 64 posts)</li><li>SEO propio sin plugin, buscador en vivo que funciona sin PHP y oración del día</li></ul></div>
       </div>
       <div class="stack2"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>Canvas</span><span>JSON-LD</span></div>
-      <a class="live" href="https://alascelestiales.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="live" href="caso-alas-celestiales.html">Ver el caso de estudio →</a>
+      <a class="live" style="margin-left:18px" href="https://alascelestiales.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
       
     </article>
     <article class="case" id="caso-dybviden" style="--accent:#5f8a94">
@@ -387,7 +491,8 @@
         <div class="col after"><h4>Cómo quedó</h4><ul><li>Motor propio de 17 tests sobre las tablas del plugin: una pregunta por pantalla, progreso, atrás y teclas 1-9</li><li>Resultados nunca clínicos, con ayuda local en Dinamarca en cada test</li><li>SEO propio, JSON-LD y sitemap; el test viaja embebido en la página, listo para hosting estático</li></ul></div>
       </div>
       <div class="stack2"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>SEO técnico</span></div>
-      <a class="live" href="https://dybviden.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="live" href="caso-dybviden.html">Ver el caso de estudio →</a>
+      <a class="live" style="margin-left:18px" href="https://dybviden.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
       
     </article>
     <article class="case" id="caso-conduce" style="--accent:#FFB020">
@@ -404,7 +509,8 @@
         <div class="col after"><h4>Cómo quedó</h4><ul><li>Neumático 3D en tiempo real (Three.js, generado por código) y buscador de 610 modelos</li><li>Manómetros SVG animados, selector de motor y medida, y «tu neumático a escala» con datos calculados</li><li>746 páginas con plantilla propia y las mismas URLs de siempre</li></ul></div>
       </div>
       <div class="stack2"><span>WordPress</span><span>PHP</span><span>Three.js</span><span>SVG</span></div>
-      <a class="live" href="https://conduceconfiado.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="live" href="caso-conduce-confiado.html">Ver el caso de estudio →</a>
+      <a class="live" style="margin-left:18px" href="https://conduceconfiado.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
     </article>
     <article class="case" id="caso-cerrajeros" style="--accent:#F5B722">
       <div class="case-head">
@@ -421,7 +527,8 @@
       </div>
       <div class="stack2"><span>WordPress</span><span>PHP</span><span>Plugin propio</span><span>Leaflet</span></div>
       
-      <a class="live" href="https://cerrajeros-cerca-de-mi.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="live" href="caso-cerrajeros.html">Ver el caso de estudio →</a>
+      <a class="live" style="margin-left:18px" href="https://cerrajeros-cerca-de-mi.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
     </article>
     <article class="case" id="caso-drivecalmly" style="--accent:#3F6F63">
       <div class="case-head">
@@ -437,7 +544,8 @@
         <div class="col after"><h4>Cómo quedó</h4><ul><li>Tema propio «Calmly»: papel claro, tipografía serif, índice de la A a la Z de 74 marcas y buscador con sugerencias</li><li>Ficha con la presión en grande (psi, bar y kPa) y el neumático dibujado a escala, que se traza como un plano</li><li>Artículos con índice que sigue la lectura, progreso de lectura y un mismo tratamiento para todas las fotos</li></ul></div>
       </div>
       <div class="stack2"><span>WordPress</span><span>PHP</span><span>JavaScript</span><span>SVG</span><span>Diseño editorial</span></div>
-      <a class="live" href="https://drivecalmly.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="live" href="caso-drivecalmly.html">Ver el caso de estudio →</a>
+      <a class="live" style="margin-left:18px" href="https://drivecalmly.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
     </article>
   </div>
 </section>
@@ -462,7 +570,7 @@
       </div>
       <div class="cmp">
         <div class="tabs" role="tablist" aria-label="Capturas de NicheFinder Pro"><button type="button" role="tab" id="t-nf-0" aria-controls="p-nf-0" aria-selected="true" tabindex="0">Inicio</button><button type="button" role="tab" id="t-nf-1" aria-controls="p-nf-1" aria-selected="false" tabindex="-1">Radar automático</button><button type="button" role="tab" id="t-nf-2" aria-controls="p-nf-2" aria-selected="false" tabindex="-1">Ideas de nichos</button><button type="button" role="tab" id="t-nf-3" aria-controls="p-nf-3" aria-selected="false" tabindex="-1">Plan de lanzamiento</button><button type="button" role="tab" id="t-nf-4" aria-controls="p-nf-4" aria-selected="false" tabindex="-1">Análisis guardados</button></div>
-        <div class="cmp-panel desk" role="tabpanel" id="p-nf-0" aria-labelledby="t-nf-0"><div class="nf-shot"><img loading="lazy" src="img/nf/inicio.webp" alt="NicheFinder Pro · Panel de inicio: cuota del día, radar, hallazgos de la semana e ideas para explorar"></div><p class="cap">Panel de inicio: cuota del día, radar, hallazgos de la semana e ideas para explorar</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-1" aria-labelledby="t-nf-1" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/radar.webp" alt="NicheFinder Pro · Radar: alertas de competidores nuevos y canales chicos que explotan, con link a cada video"></div><p class="cap">Radar: alertas de competidores nuevos y canales chicos que explotan, con link a cada video</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-2" aria-labelledby="t-nf-2" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/ideas3.webp" alt="NicheFinder Pro · Banco de ideas: nicho con su validación y 10 ideas de video con gancho y búsquedas medidas"></div><p class="cap">Banco de ideas: nicho con su validación y 10 ideas de video con gancho y búsquedas medidas</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-3" aria-labelledby="t-nf-3" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/plan.webp" alt="NicheFinder Pro · Plan de 30 días medido sobre la competencia real: ritmo, duración y estilo de títulos"></div><p class="cap">Plan de 30 días medido sobre la competencia real: ritmo, duración y estilo de títulos</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-4" aria-labelledby="t-nf-4" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/analisis.webp" alt="NicheFinder Pro · Historial de análisis: brechas de idioma, ideas validadas y lo que pide la audiencia"></div><p class="cap">Historial de análisis: brechas de idioma, ideas validadas y lo que pide la audiencia</p></div>
+        <div class="cmp-panel desk" role="tabpanel" id="p-nf-0" aria-labelledby="t-nf-0"><div class="nf-shot"><img loading="lazy" src="img/nf/inicio.webp" srcset="img/nf/inicio-900.webp 900w, img/nf/inicio.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="NicheFinder Pro · Panel de inicio: cuota del día, radar, hallazgos de la semana e ideas para explorar"></div><p class="cap">Panel de inicio: cuota del día, radar, hallazgos de la semana e ideas para explorar</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-1" aria-labelledby="t-nf-1" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/radar.webp" srcset="img/nf/radar-900.webp 900w, img/nf/radar.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="NicheFinder Pro · Radar: alertas de competidores nuevos y canales chicos que explotan, con link a cada video"></div><p class="cap">Radar: alertas de competidores nuevos y canales chicos que explotan, con link a cada video</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-2" aria-labelledby="t-nf-2" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/ideas3.webp" srcset="img/nf/ideas3-900.webp 900w, img/nf/ideas3.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="NicheFinder Pro · Banco de ideas: nicho con su validación y 10 ideas de video con gancho y búsquedas medidas"></div><p class="cap">Banco de ideas: nicho con su validación y 10 ideas de video con gancho y búsquedas medidas</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-3" aria-labelledby="t-nf-3" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/plan.webp" srcset="img/nf/plan-900.webp 900w, img/nf/plan.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="NicheFinder Pro · Plan de 30 días medido sobre la competencia real: ritmo, duración y estilo de títulos"></div><p class="cap">Plan de 30 días medido sobre la competencia real: ritmo, duración y estilo de títulos</p></div><div class="cmp-panel desk" role="tabpanel" id="p-nf-4" aria-labelledby="t-nf-4" hidden><div class="nf-shot"><img loading="lazy" src="img/nf/analisis.webp" srcset="img/nf/analisis-900.webp 900w, img/nf/analisis.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="NicheFinder Pro · Historial de análisis: brechas de idioma, ideas validadas y lo que pide la audiencia"></div><p class="cap">Historial de análisis: brechas de idioma, ideas validadas y lo que pide la audiencia</p></div>
       </div>
       <div class="nf-grid">
         <div class="nf-col">
@@ -490,10 +598,11 @@
         </div>
       </div>
       <div class="stack2"><span>Python</span><span>MCP (Model Context Protocol)</span><span>Claude API</span><span>YouTube Data API</span><span>SQLite</span><span>pywebview</span><span>pytest</span></div>
+      <a class="live" href="caso-nichefinder-pro.html">Ver el caso de estudio →</a>
       <span class="note">App de escritorio de uso personal: sin link público. Las capturas son de la app real.</span>
     </article>
     <div class="mini-grid">
-      <div class="mini-proj">
+      <div class="mini-proj" id="tienda">
         <div class="browser">
           <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="url">articuloshogarcl.com</div></div>
           <div class="shot-wrap"><img loading="lazy" src="img/store-home.webp" alt="Home de CL Artículos del Hogar en vivo: hero oscuro con un living, una bicicleta y el buscador de productos"></div>
@@ -536,7 +645,7 @@
           <a class="link2" href="https://nexusplay-ecommerce.vercel.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a> <a class="link2" href="https://github.com/leonelzalazar912/nexusplay-ecommerce" target="_blank" rel="noopener" style="margin-left:14px">Código en GitHub →</a>
         </div>
       </div>
-      <div class="mini-proj">
+      <div class="mini-proj" id="malajo">
         <div class="browser">
           <div class="bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><div class="url">malajo (uso interno)</div></div>
           <div class="shot-wrap"><img loading="lazy" src="img/malajo-dashboard.webp" alt="Panel de pedidos de Malajo, con estadísticas, tickets por pedido y filtros"></div>
@@ -567,7 +676,7 @@
     <div class="skill-groups">
       <div class="skill-card">
         <div class="badge">D</div>
-        <h4>Desarrollo</h4>
+        <h3>Desarrollo</h3>
         <div class="sub">Para construir el producto en sí</div>
         <div class="chips">
           <span class="chip">WordPress</span><span class="chip">WooCommerce</span>
@@ -578,7 +687,7 @@
       </div>
       <div class="skill-card">
         <div class="badge">S</div>
-        <h4>SEO &amp; posicionamiento</h4>
+        <h3>SEO &amp; posicionamiento</h3>
         <div class="sub">Para que ese producto se encuentre</div>
         <div class="chips">
           <span class="chip">SEO Técnico</span><span class="chip">SEO Local</span>
@@ -589,7 +698,7 @@
       </div>
       <div class="skill-card">
         <div class="badge">IA</div>
-        <h4>Programación con IA</h4>
+        <h3>Programación con IA</h3>
         <div class="sub">Para construir más rápido y sumar IA a los productos</div>
         <div class="chips">
           <span class="chip">Claude Code</span><span class="chip">Desarrollo asistido por IA</span>
@@ -600,7 +709,7 @@
       </div>
       <div class="skill-card">
         <div class="badge">R</div>
-        <h4>Rendimiento &amp; seguridad</h4>
+        <h3>Rendimiento &amp; seguridad</h3>
         <div class="sub">Para que aguante en producción</div>
         <div class="chips">
           <span class="chip">Optimización de velocidad</span><span class="chip">Seguridad web</span>

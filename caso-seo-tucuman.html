@@ -9,13 +9,15 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D18'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23D9AE64'%3EL%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
 <style>
   .back{display:inline-block;margin:18px 0 0;font-family:"IBM Plex Mono",monospace;font-size:.8rem;text-decoration:none;color:var(--gold-deep)}
   :root{
     --paper:#F5EFE2; --panel:#FDFBF6; --panel-2:#F9F3E6; --panel-dark:#2B2621;
     --ink:#2B2621; --ink-soft:#5B534A; --line:#DFD1AE;
-    --gold:#B8873F; --gold-deep:#8C6A2E; --gold-soft:#EADFC0; --gold-bright:#D9AE64;
+    --gold:#B8873F; --gold-deep:#795A20; --gold-soft:#EADFC0; --gold-bright:#D9AE64;
     --on-dark:#F5EFE2;
     --shadow: 0 1px 2px rgba(43,38,33,.06), 0 8px 22px -10px rgba(43,38,33,.14);
     --shadow-lg: 0 4px 8px rgba(43,38,33,.08), 0 20px 40px -16px rgba(43,38,33,.22);
@@ -133,7 +135,7 @@
 
   .kw-group{margin-bottom:22px;}
   .kw-group:last-child{margin-bottom:0;}
-  .kw-group h4{font-size:.92rem; font-weight:600; margin:0 0 10px; color:var(--ink);}
+  .kw-group h3{font-family:"Work Sans",sans-serif; font-size:.92rem; font-weight:600; margin:0 0 10px; color:var(--ink);}
   .chips{display:flex; flex-wrap:wrap; gap:7px;}
   .chip{
     font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--ink);
@@ -206,7 +208,7 @@
     <p>Esto es lo que fundamenta la estrategia — no una corazonada. Cada palabra clave combina producto, zona y, cuando aplica, intención de compra. Las marcadas <span class="chip hot" style="padding:2px 7px;">así</span> son las de mayor prioridad, porque combinan búsqueda de producto con una decisión de compra casi tomada.</p>
 
     <div class="kw-group">
-      <h4>Colchones y sommiers</h4>
+      <h3>Colchones y sommiers</h3>
       <div class="chips">
         <span class="chip">colchones en tucumán</span>
         <span class="chip hot">sommier 2 plazas cuotas sin interés tucumán</span>
@@ -217,7 +219,7 @@
     </div>
 
     <div class="kw-group">
-      <h4>Muebles</h4>
+      <h3>Muebles</h3>
       <div class="chips">
         <span class="chip hot">placares a medida tucumán</span>
         <span class="chip hot">juego de comedor 6 sillas envío gratis tucumán</span>
@@ -228,7 +230,7 @@
     </div>
 
     <div class="kw-group">
-      <h4>Bicicletas</h4>
+      <h3>Bicicletas</h3>
       <div class="chips">
         <span class="chip hot">bicicleta rodado 29 12 cuotas sin interés</span>
         <span class="chip">bicicletas en tucumán</span>
@@ -238,7 +240,7 @@
     </div>
 
     <div class="kw-group">
-      <h4>Contenido long-tail (preguntas de pre-compra)</h4>
+      <h3>Contenido long-tail (preguntas de pre-compra)</h3>
       <div class="chips">
         <span class="chip">diferencia entre sommier y colchón</span>
         <span class="chip">medidas de cama 2 plazas / queen / king</span>

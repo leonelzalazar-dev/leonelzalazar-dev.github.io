@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es-AR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NicheFinder Pro: software con IA para investigar nichos — Leonel Zalazar</title>
+<meta name="description" content="Caso de estudio: software en Python que investiga nichos de YouTube, conectado a Claude con un servidor MCP de 33 herramientas, con cuota y costo de IA controlados y 246 tests.">
+<link rel="canonical" href="https://leonelzalazar912.github.io/caso-nichefinder-pro.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://leonelzalazar912.github.io/caso-nichefinder-pro.html">
+<meta property="og:title" content="NicheFinder Pro: software con IA que investiga nichos de YouTube">
+<meta property="og:description" content="Python, servidor MCP para Claude, radar automático y costo de IA medido en cada resultado.">
+<meta property="og:image" content="https://leonelzalazar912.github.io/img/nf/inicio.webp">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="750">
+<meta name="theme-color" content="#221D18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D18'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23D9AE64'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="caso.css">
+<style>
+  .chat{ background:var(--panel-dark); border-radius:14px; padding:18px; display:grid; gap:10px; font-size:.92rem; margin-top:20px; box-shadow:var(--shadow-lg); }
+  .chat p{ margin:0; padding:11px 14px; border-radius:10px; line-height:1.5; max-width:92%; }
+  .chat .me{ background:rgba(217,174,100,.16); color:var(--on-dark); justify-self:end; }
+  .chat .ai{ background:rgba(255,255,255,.05); color:var(--on-dark-soft); }
+  .chat code{ background:none; border:0; padding:0; color:var(--gold-bright); }
+  .arch{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin-top:20px; box-shadow:var(--shadow); display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:14px; align-items:center; }
+  .arch .col{ display:grid; gap:8px; }
+  .arch .box{ font-family:"IBM Plex Mono",monospace; font-size:.8rem; text-align:center; border:1px solid var(--line); background:var(--panel-2); border-radius:8px; padding:9px 10px; }
+  .arch .box.core{ background:var(--gold-soft); border-color:var(--gold); color:var(--gold-deep); font-weight:600; padding:22px 10px; }
+  .arch .box small{ display:block; font-family:"Work Sans",sans-serif; font-size:.74rem; color:var(--ink-soft); font-weight:400; margin-top:2px; }
+  .arch .arrow{ color:var(--gold); font-size:1.3rem; }
+  @media (max-width:760px){ .arch{ grid-template-columns:1fr; } .arch .arrow{ transform:rotate(90deg); justify-self:center; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">Leonel Zalazar</a>
+  <a href="index.html#nichefinder">← Volver al portfolio</a>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Caso de estudio · Software con IA</div>
+    <h1>NicheFinder Pro: software con IA que investiga nichos de YouTube</h1>
+    <p class="lede">Una herramienta en Python que estima qué tan viable es monetizar un nicho <b>antes de invertir en él</b>. Funciona como app de escritorio, por terminal y <b>conectada a Claude</b>, que la usa directamente cuando se le pide algo en lenguaje natural.</p>
+    <dl class="ficha">
+      <div><dt>Mi rol</dt><dd>Producto, arquitectura y desarrollo (proyecto propio)</dd></div>
+      <div><dt>Tiempo</dt><dd>34 sesiones de trabajo, de julio a octubre de 2026</dd></div>
+      <div><dt>Tecnología</dt><dd>Python, MCP, Claude API, YouTube Data API, SQLite</dd></div>
+      <div><dt>Estado</dt><dd>En uso personal, sin versión pública</dd></div>
+    </dl>
+    <div class="hero-cta">
+      <a class="btn primary" href="#capturas">Ver capturas de la app →</a>
+      <a class="btn ghost" href="#decisiones">Ver las decisiones técnicas</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<div class="wrap">
+  <div class="stats" role="list">
+    <div role="listitem"><b>33</b><span>herramientas que Claude puede usar (servidor MCP)</span></div>
+    <div role="listitem"><b>246</b><span>tests automáticos</span></div>
+    <div role="listitem"><b>201 → 3</b><span>unidades de cuota por análisis de canal</span></div>
+    <div role="listitem"><b>US$ 0,007</b><span>lo que cuesta el informe semanal de IA</span></div>
+  </div>
+</div>
+
+<nav class="toc" aria-label="En esta página" style="margin-top:34px;"><div class="wrap"><ol>
+  <li><a href="#problema"><span>01</span>Problema</a></li>
+  <li><a href="#contexto"><span>02</span>Contexto</a></li>
+  <li><a href="#rol"><span>03</span>Mi rol</a></li>
+  <li><a href="#decisiones"><span>04</span>Decisiones</a></li>
+  <li><a href="#proceso"><span>05</span>Proceso</a></li>
+  <li><a href="#problemas"><span>06</span>Problemas resueltos</a></li>
+  <li><a href="#capturas"><span>07</span>Capturas</a></li>
+  <li><a href="#resultados"><span>08</span>Resultados</a></li>
+  <li><a href="#stack"><span>09</span>Stack</a></li>
+</ol></div></nav>
+
+<div class="wrap">
+
+<section id="problema">
+  <div class="num">01 · El problema</div>
+  <div class="prose">
+    <h2>Elegir un nicho sin apostar a ciegas</h2>
+    <p>La idea de negocio: encontrar canales que funcionan en un idioma y replicar el concepto en otro (inglés ↔ español), con canales automatizados y sin cara. El riesgo: invertir meses en un formato que ya no rinde o que en español ya está ocupado.</p>
+    <p><b>Las restricciones:</b> la API de YouTube da 10.000 unidades por día y una sola búsqueda cuesta 100. El presupuesto de IA era de unos pocos dólares. Cada consulta tenía que valer la pena.</p>
+  </div>
+</section>
+
+<section id="contexto">
+  <div class="num">02 · Contexto</div>
+  <div class="prose">
+    <h2>De app de escritorio a herramienta para Claude</h2>
+    <p>Empezó en julio de 2026 como una app de escritorio con cinco módulos: búsqueda de canales, score de monetización, análisis con IA, competencia e interfaz web. En agosto sumé funciones tomando como referencia a NexLev, una herramienta paga del rubro.</p>
+    <p>En octubre llegó el cambio grande: que Claude pudiera <b>usar el software directamente</b>, sin abrir la app. Eso obligó a reordenar la arquitectura y a cuidar cada unidad de cuota.</p>
+  </div>
+</section>
+
+<section id="rol">
+  <div class="num">03 · Mi rol</div>
+  <div class="prose">
+    <h2>Producto y código</h2>
+    <p class="soft">Proyecto propio. Programé con Claude Code como asistente; definí qué construir, qué descartar y revisé cada resultado con datos reales.</p>
+  </div>
+  <div class="roles">
+    <div><b>Producto</b>Qué medir, qué se puede replicar de las herramientas pagas y qué no, y qué es una oportunidad real.</div>
+    <div><b>Arquitectura</b>Capa de servicio compartida, caché, control de cuota, servidor MCP y tareas automáticas.</div>
+    <div><b>Calidad</b>246 tests, calibración del score con 150 canales reales y verificación en vivo de cada función.</div>
+  </div>
+</section>
+
+<section id="decisiones">
+  <div class="num">04 · Decisiones técnicas</div>
+  <div class="prose">
+    <h2>Qué elegí y por qué</h2>
+  </div>
+  <div class="arch" aria-label="Arquitectura: tres interfaces, una lógica compartida y una capa de datos">
+    <div class="col"><div class="box">App de escritorio<small>pywebview</small></div><div class="box">Terminal<small>CLI con salida JSON</small></div><div class="box">Claude<small>servidor MCP</small></div></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="col"><div class="box core">service.py<small>una sola lógica, sin interfaz</small></div></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="col"><div class="box">youtube_api.py<small>caché + cuota</small></div><div class="box">SQLite<small>historial, caché, radar</small></div><div class="box">Claude Haiku<small>traducir, resumir, ideas</small></div></div>
+  </div>
+  <div class="decisions">
+    <article class="dec">
+      <span class="tag">Arquitectura</span>
+      <h3>Una sola lógica para tres interfaces</h3>
+      <p>La app, la terminal y el servidor MCP llaman a la misma capa de servicio. Un arreglo sirve para las tres y los tests cubren la lógica una sola vez.</p>
+      <p class="alt"><b>Descarté</b>Escribir un servidor MCP aparte: duplicaba código y los errores se arreglaban en un lado y no en el otro.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Costos</span>
+      <h3>La cuota como recurso escaso</h3>
+      <p>Toda llamada a YouTube pasa por un único punto con caché en SQLite y registro de gasto. Usar la lista de subidas de un canal (1 unidad) en vez de la búsqueda (100) bajó el análisis de un canal de ~201 a ~3 unidades. Antes de lo caro, pide confirmación.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Datos</span>
+      <h3>Un score recalibrado con datos reales</h3>
+      <p>El primer score no discriminaba: de 544 evaluaciones, 89 % salían en rojo y solo 1 en verde. Lo rehíce con los últimos 30 videos largos, el mercado donde se publicaría y un factor de confianza, y lo calibré con 150 canales reales.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">IA</span>
+      <h3>Reglas para decidir, IA para redactar</h3>
+      <p>Los veredictos («hueco real», «mercado ocupado») salen de reglas sobre datos, no de la opinión de un modelo: son reproducibles y explicables. Claude Haiku traduce, resume y propone ideas con salida estructurada (JSON garantizado).</p>
+    </article>
+    <article class="dec">
+      <span class="tag">IA</span>
+      <h3>Costo de IA medido en cada respuesta</h3>
+      <p>Cada resultado trae los tokens y el costo real. Medido: 3 ideas de video ≈ US$ 0,002 y el informe semanal del radar, US$ 0,0071.</p>
+      <p class="alt"><b>Descarté</b>Generar ideas con la API desde la app: Claude Code las piensa sin costo extra y las guarda por MCP, con validación gratis.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Automatización</span>
+      <h3>Un radar que trabaja solo</h3>
+      <p>Una tarea diaria vigila canales y nichos, descubre temas nuevos en tres idiomas y deja alertas. Tiene un tope de 1.000 unidades por corrida y nunca deja menos de 3.000 para el uso del día.</p>
+    </article>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="num">05 · Proceso</div>
+  <div class="prose">
+    <h2>Por etapas, con un punto de restauración antes de cada cambio grande</h2>
+    <ol class="timeline">
+      <li><span class="dot">1</span><b>Julio · Los cinco módulos base</b><span class="t">Búsqueda, score de monetización, análisis con IA, competencia e interfaz web.</span></li>
+      <li><span class="dot">2</span><b>Agosto · Producto y diseño</b><span class="t">Auditoría completa, mejoras de robustez y funciones inspiradas en NexLev.</span></li>
+      <li><span class="dot">3</span><b>Octubre · Lógica separada, terminal y MCP</b><span class="t">Primero un commit de base en Git; después la capa de servicio, la CLI, el servidor MCP y el caché de cuota.</span></li>
+      <li><span class="dot">4</span><b>Score v2</b><span class="t">Rendimiento actual y mercado destino, calibrado con 150 canales reales.</span></li>
+      <li><span class="dot">5</span><b>Brecha de idioma</b><span class="t">¿Funciona en inglés y tiene hueco en español o portugués? En las 6 direcciones.</span></li>
+      <li><span class="dot">6</span><b>Radar automático</b><span class="t">Tarea diaria, descubrimiento de nichos, minería de comentarios, avisos de Windows e informe semanal con IA.</span></li>
+      <li><span class="dot">7</span><b>Rediseño visual en 4 etapas</b><span class="t">Modo oscuro, movimiento, gráficos propios y una pantalla de inicio con buscador Ctrl+K.</span></li>
+      <li><span class="dot">8</span><b>Banco de ideas y plan de lanzamiento</b><span class="t">Ideas validadas gratis y un calendario de 30 días medido sobre la competencia real.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="problemas">
+  <div class="num">06 · Problemas resueltos</div>
+  <div class="prose">
+    <h2>Lo que mostraron los datos reales</h2>
+  </div>
+  <div class="bugs">
+    <div class="bug"><div><h3>Problema</h3><p><b>41 de 50 resultados eran Shorts</b> y la muestra de un nicho quedaba en 8 videos.</p></div><div><h3>Solución</h3><p>La búsqueda pide videos de 4 a 20 minutos, sin costo extra. La muestra pasó a 37-41 videos.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Contar canales medía mal la competencia.</b> «Ingeniería antigua» tenía 39 canales, pero con una mediana de 876 vistas.</p></div><div><h3>Solución</h3><p>Ahora cuentan solo los <b>competidores reales</b>: canales con algún video de 10.000 vistas o más.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Un canal de 477 vistas por video salía entre los 10 mejores</b> por porcentajes engañosos.</p></div><div><h3>Solución</h3><p>Un factor de confianza: esos indicadores cuentan completos recién desde ~10.000 vistas por video.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Google Trends falló en 14 de 18 consultas</b> por límite de uso.</p></div><div><h3>Solución</h3><p>Se pausa solo unas horas y, mientras tanto, la demanda se mide con el autocompletado de YouTube.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>La base de datos pesaba 28 MB</b>, casi todo caché.</p></div><div><h3>Solución</h3><p>Compresión del caché: pasó a <b>5,8 MB</b>, y se sigue leyendo lo que estaba guardado sin comprimir.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Un comando nuevo chocaba con uno existente</b> y rompía la terminal entera, incluida la tarea diaria del radar.</p></div><div><h3>Solución</h3><p>Lo renombré y sumé un test que arma todos los comandos y verifica que cada uno apunte a una operación real.</p></div></div>
+  </div>
+</section>
+
+<section id="capturas">
+  <div class="num">07 · Capturas</div>
+  <div class="prose">
+    <h2>Cómo se ve y cómo se usa</h2>
+    <p class="soft">Capturas de la app real. Debajo, un pedido típico a Claude.</p>
+  </div>
+  <div class="cmp">
+    <div class="tabs" role="tablist" aria-label="Capturas de NicheFinder Pro"><button type="button" role="tab" id="t-0" aria-controls="p-0" aria-selected="true" tabindex="0">Inicio</button><button type="button" role="tab" id="t-1" aria-controls="p-1" aria-selected="false" tabindex="-1">Radar automático</button><button type="button" role="tab" id="t-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Ideas de nichos</button><button type="button" role="tab" id="t-3" aria-controls="p-3" aria-selected="false" tabindex="-1">Plan de lanzamiento</button><button type="button" role="tab" id="t-4" aria-controls="p-4" aria-selected="false" tabindex="-1">Análisis guardados</button></div>
+    <div class="cmp-panel" role="tabpanel" id="p-0" aria-labelledby="t-0"><div class="shot"><img src="img/nf/inicio.webp" srcset="img/nf/inicio-900.webp 900w, img/nf/inicio.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="Panel de inicio de NicheFinder Pro: cuota del día, radar, hallazgos de la semana e ideas para explorar"></div><p class="cap">Inicio: cuota del día, radar, hallazgos de la semana e ideas para explorar</p></div>
+    <div class="cmp-panel" role="tabpanel" id="p-1" aria-labelledby="t-1" hidden><div class="shot"><img loading="lazy" src="img/nf/radar.webp" srcset="img/nf/radar-900.webp 900w, img/nf/radar.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="Radar: alertas de competidores nuevos y canales chicos que explotan"></div><p class="cap">Radar: alertas de competidores nuevos y canales chicos que explotan</p></div>
+    <div class="cmp-panel" role="tabpanel" id="p-2" aria-labelledby="t-2" hidden><div class="shot"><img loading="lazy" src="img/nf/ideas3.webp" srcset="img/nf/ideas3-900.webp 900w, img/nf/ideas3.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="Banco de ideas: un nicho con su validación y 10 ideas de video"></div><p class="cap">Banco de ideas: nicho validado y 10 ideas de video con búsquedas medidas</p></div>
+    <div class="cmp-panel" role="tabpanel" id="p-3" aria-labelledby="t-3" hidden><div class="shot"><img loading="lazy" src="img/nf/plan.webp" srcset="img/nf/plan-900.webp 900w, img/nf/plan.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="Plan de lanzamiento de 30 días medido sobre la competencia real"></div><p class="cap">Plan de 30 días: ritmo, duración y estilo de títulos medidos sobre la competencia</p></div>
+    <div class="cmp-panel" role="tabpanel" id="p-4" aria-labelledby="t-4" hidden><div class="shot"><img loading="lazy" src="img/nf/analisis.webp" srcset="img/nf/analisis-900.webp 900w, img/nf/analisis.webp 1200w" sizes="(max-width: 700px) 90vw, 1000px" alt="Historial de análisis: brechas de idioma, ideas validadas y pedidos de la audiencia"></div><p class="cap">Análisis guardados: brechas de idioma, ideas validadas y lo que pide la audiencia</p></div>
+  </div>
+  <div class="chat prose" role="group" aria-label="Ejemplo de uso con Claude">
+    <p class="me">«Buscame 5 canales de historia antigua con buen potencial y poca competencia, analizá el mejor y proponeme 3 ideas de video.»</p>
+    <p class="ai">Claude llama a <code>descubrir_oportunidades</code>: busca 50 canales, los ordena por oportunidad, analiza el mejor y propone ideas con gancho y estructura. Una sola llamada, ~150 unidades de cuota y centavos de IA.</p>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="num">08 · Resultados</div>
+  <div class="prose">
+    <h2>Lo que se midió</h2>
+  </div>
+  <div class="results" style="grid-template-columns:1fr;">
+    <div class="res-box">
+      <h3>Medido</h3>
+      <ul>
+        <li><b>Cuota:</b> análisis de canal de ~201 a ~3 unidades; canales abandonados de 100 a 1 por canal; vista del nicho de ~606 a ~12.</li>
+        <li><b>Score útil:</b> de 1 solo verde en 544 evaluaciones a un reparto de 28 % rojo, 49 % amarillo y 22 % verde entre los canales con más de 1.000 vistas por video.</li>
+        <li><b>Costo de IA:</b> informe semanal US$ 0,0071; 3 ideas ≈ US$ 0,002.</li>
+        <li><b>Calidad:</b> 246 tests que no salen a internet ni gastan cuota; base de datos de 28 a 5,8 MB.</li>
+        <li><b>Hallazgo real:</b> «ancient engineering → ingeniería antigua» dio demanda alta y oferta débil (índice 69,8 de 100).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section id="stack">
+  <div class="num">09 · Stack</div>
+  <div class="stack-groups">
+    <div><h3>Backend</h3><div class="stack"><span>Python</span><span>SQLite</span><span>pytest</span><span>Git</span></div></div>
+    <div><h3>IA</h3><div class="stack"><span>Claude API (Haiku)</span><span>MCP</span><span>Salida estructurada</span><span>Claude Code</span></div></div>
+    <div><h3>Datos e interfaz</h3><div class="stack"><span>YouTube Data API</span><span>Google Trends</span><span>pywebview</span><span>HTML, CSS y JS</span></div></div>
+  </div>
+</section>
+
+<div class="cta">
+  <div>
+    <h2>¿Tenés una tarea que se podría automatizar con IA?</h2>
+    <p>Investigar, clasificar, resumir o generar contenido, con el costo bajo control.</p>
+  </div>
+  <div class="hero-cta">
+    <a class="btn primary" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20caso%20de%20NicheFinder%20Pro.%20Me%20interesa%20automatizar%20una%20tarea%20con%20IA." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Escribime por WhatsApp</a>
+  </div>
+</div>
+
+<nav class="next-case" aria-label="Más casos">
+  <a href="caso-conduce-confiado.html">← Caso anterior: Conduce Confiado</a>
+  <a href="caso-cerrajeros.html">Siguiente caso: Cerrajeros Cerca de Mí →</a>
+</nav>
+</div>
+</main>
+
+<footer class="end"><div class="wrap">Leonel Zalazar — Desarrollo web &amp; SEO técnico · Tucumán, Argentina</div></footer>
+<script src="caso.js" defer></script>
+</body></html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es-AR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alas Celestiales: atmósfera propia y contenido con demanda — Leonel Zalazar</title>
+<meta name="description" content="Caso de estudio: rediseño de un sitio WordPress de oraciones con tema propio, partículas en canvas, bloques de oración automáticos con Copiar e Imprimir y contenido nuevo guiado por búsquedas reales.">
+<link rel="canonical" href="https://leonelzalazar912.github.io/caso-alas-celestiales.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://leonelzalazar912.github.io/caso-alas-celestiales.html">
+<meta property="og:title" content="Alas Celestiales: atmósfera propia y contenido guiado por lo que la gente busca">
+<meta property="og:description" content="Tema propio «cosmos sagrado», 212 oraciones con Copiar e Imprimir y contenido nuevo a partir de 1.155 búsquedas reales.">
+<meta property="og:image" content="https://leonelzalazar912.github.io/img/casos/ac-hero.webp">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="800">
+<meta name="theme-color" content="#221D18">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D18'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23D9AE64'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="caso.css">
+<style>
+  .feature2{ display:grid; grid-template-columns:1fr 1.25fr; gap:28px; align-items:start; margin-top:22px; }
+  @media (max-width:860px){ .feature2{ grid-template-columns:1fr; } }
+  .feature2 ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .feature2 li{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; font-size:.9rem; color:var(--ink-soft); box-shadow:var(--shadow); }
+  .feature2 li b{ display:block; color:var(--ink); margin-bottom:2px; }
+  .feature2 .cmp{ margin-top:0; }
+  .ac-shot{ border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0d0b08; box-shadow:var(--shadow-lg); }
+  .ac-shot img{ display:block; width:100%; height:auto; color:transparent; }
+  .demand{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:22px; box-shadow:var(--shadow); }
+  .demand div{ background:var(--panel); padding:18px 14px; text-align:center; }
+  .demand b{ display:block; font-family:"Fraunces",serif; font-weight:700; font-size:1.6rem; line-height:1.05; color:var(--gold-deep); margin-bottom:6px; font-variant-numeric:tabular-nums; }
+  .demand span{ font-size:.78rem; color:var(--ink-soft); line-height:1.35; display:block; }
+  @media (max-width:640px){ .demand{ grid-template-columns:1fr 1fr; } .demand b{ font-size:1.35rem; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">Leonel Zalazar</a>
+  <a href="index.html#caso-alas">← Volver al portfolio</a>
+</div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Caso de estudio · Diseño de atmósfera · Contenido SEO</div>
+    <h1>Alas Celestiales: atmósfera propia y contenido guiado por lo que la gente busca</h1>
+    <p class="lede">Un sitio de oraciones católicas que ya traía visitas y se monetizaba con anuncios. Lo rediseñé con un tema propio, <b>«cosmos sagrado»</b>, puse las oraciones en el centro y <b>sumé contenido nuevo a partir de búsquedas reales</b>.</p>
+    <dl class="ficha">
+      <div><dt>Mi rol</dt><dd>Diseño, desarrollo, SEO y contenido</dd></div>
+      <div><dt>Tiempo</dt><dd>4 etapas de diseño y 3 tandas de contenido</dd></div>
+      <div><dt>Tecnología</dt><dd>WordPress, PHP, JavaScript, Canvas</dd></div>
+      <div><dt>Estado</dt><dd>En vivo como copia de portfolio</dd></div>
+    </dl>
+    <div class="hero-cta">
+      <a class="btn primary" href="https://alascelestiales.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo →</a>
+      <a class="btn ghost" href="#protagonista">Ver cómo funciona</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<div class="wrap">
+  <div class="stats" role="list">
+    <div role="listitem"><b>117</b><span>publicaciones con tema propio</span></div>
+    <div role="listitem"><b>212</b><span>oraciones con Copiar e Imprimir, detectadas solas</span></div>
+    <div role="listitem"><b>1.155</b><span>búsquedas reales analizadas para el contenido nuevo</span></div>
+    <div role="listitem"><b>100</b><span>en accesibilidad (Lighthouse, portada en vivo)</span></div>
+  </div>
+</div>
+
+<nav class="toc" aria-label="En esta página" style="margin-top:34px;"><div class="wrap"><ol>
+  <li><a href="#problema"><span>01</span>Problema</a></li>
+  <li><a href="#contexto"><span>02</span>Contexto</a></li>
+  <li><a href="#rol"><span>03</span>Mi rol</a></li>
+  <li><a href="#decisiones"><span>04</span>Decisiones</a></li>
+  <li><a href="#protagonista"><span>05</span>La oración, protagonista</a></li>
+  <li><a href="#demanda"><span>06</span>Contenido con demanda</a></li>
+  <li><a href="#proceso"><span>07</span>Proceso</a></li>
+  <li><a href="#problemas"><span>08</span>Problemas resueltos</a></li>
+  <li><a href="#antes-despues"><span>09</span>Antes y después</a></li>
+  <li><a href="#resultados"><span>10</span>Resultados</a></li>
+  <li><a href="#stack"><span>11</span>Stack</a></li>
+</ol></div></nav>
+
+<div class="wrap">
+
+<section id="problema">
+  <div class="num">01 · El problema</div>
+  <div class="prose">
+    <h2>Un sitio con visitas, pero sin un lugar para la oración</h2>
+    <p>Alas Celestiales tenía buen contenido y gente que llegaba desde Google, pero usaba una plantilla azul igual a la de cualquier otro sitio. La oración quedaba mezclada con el texto, sin forma de copiarla ni imprimirla, y el menú arrastraba todas las categorías viejas.</p>
+    <p><b>El objetivo:</b> que el sitio se sienta un lugar de recogimiento, que encontrar, copiar o imprimir una oración sea inmediato, y que siga creciendo con contenido que la gente realmente busca.</p>
+  </div>
+</section>
+
+<section id="contexto">
+  <div class="num">02 · Contexto</div>
+  <div class="prose">
+    <h2>Lo que había adentro</h2>
+    <ul>
+      <li><b>Más de 100 publicaciones</b> con oraciones a santos, arcángeles, apóstoles y la Virgen.</li>
+      <li><b>Categorías desordenadas</b>: cada santo suelto, sin agrupar.</li>
+      <li><b>Los dos contenidos con más tráfico</b> eran páginas sueltas, fuera de la estructura del blog.</li>
+      <li>Público hispano de toda Latinoamérica, y el sitio se monetizaba con Google AdSense.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="rol">
+  <div class="num">03 · Mi rol</div>
+  <div class="prose">
+    <h2>Diseño, código y contenido</h2>
+    <p class="soft">Trabajé solo, con Claude Code como asistente de programación. Las decisiones, el diseño y la revisión de cada etapa fueron míos.</p>
+  </div>
+  <div class="roles">
+    <div><b>Diseño de atmósfera</b>Tema «cosmos sagrado»: fondo oscuro cálido, partículas doradas y tipografía serif.</div>
+    <div><b>Desarrollo y SEO</b>Bloques de oración automáticos, buscador en vivo, oración del día y SEO sin plugin.</div>
+    <div><b>Contenido</b>Análisis de búsquedas reales y tandas de publicaciones nuevas y optimizadas.</div>
+  </div>
+</section>
+
+<section id="decisiones">
+  <div class="num">04 · Decisiones técnicas</div>
+  <div class="prose">
+    <h2>Qué elegí y por qué</h2>
+  </div>
+  <div class="decisions">
+    <article class="dec">
+      <span class="tag">Diseño</span>
+      <h3>Atmósfera que no pesa</h3>
+      <p>Partículas doradas en canvas, como velas o incienso. Se pausan cuando salen de la pantalla y quedan quietas si el visitante pidió «reducir movimiento».</p>
+      <p class="alt"><b>Descarté</b>Un cielo estrellado con una esfera 3D: se sentía ciencia ficción, el título perdía legibilidad y el scroll se volvía pesado.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Contenido</span>
+      <h3>La oración se detecta sola</h3>
+      <p>El tema reconoce la oración dentro de cada publicación (cursiva, comillas o versos que terminan en «Amén») y la pone en un recuadro con Copiar e Imprimir. Sin editar a mano más de 100 publicaciones.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Interfaz</span>
+      <h3>Buscador en vivo, sin servidor</h3>
+      <p>Un índice de todas las oraciones que se regenera solo al guardar. Muestra resultados mientras escribís, ignora tildes y se maneja con el teclado.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Publicación</span>
+      <h3>Oración del día en un sitio estático</h3>
+      <p>El servidor y el navegador hacen la misma cuenta a partir de la fecha. Así la oración del día cambia sola cada día, aunque el sitio esté publicado como HTML.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">SEO</span>
+      <h3>SEO propio, sin plugin</h3>
+      <p>Reutiliza los títulos y descripciones que ya estaban cargados, suma datos estructurados (artículo, migas y buscador del sitio) y corrige en pantalla 28 títulos rotos.</p>
+    </article>
+    <article class="dec">
+      <span class="tag">Estructura</span>
+      <h3>5 grupos y las mismas URLs</h3>
+      <p>Arcángeles, Apóstoles, Santos, Virgen María y Devociones. Los dos contenidos con más tráfico pasaron a ser publicaciones normales, con la misma dirección de siempre.</p>
+    </article>
+  </div>
+</section>
+
+<section id="protagonista">
+  <div class="num">05 · La oración, protagonista</div>
+  <div class="prose">
+    <h2>Todo gira alrededor de rezar</h2>
+    <p class="soft">Capturas del sitio en vivo.</p>
+  </div>
+  <div class="feature2">
+    <ul>
+      <li><b>Portada con atmósfera</b>Partículas doradas, un haz de luz y la cantidad de oraciones a la vista.</li>
+      <li><b>Oración del día</b>Una distinta cada día, con su fecha, para leer completa o copiar.</li>
+      <li><b>Bloque de oración</b>Recuadro propio con Copiar (incluye el título y el link) e Imprimir con una hoja preparada.</li>
+      <li><b>Buscador en vivo</b>Resultados con imagen y categoría mientras escribís, desde el menú, el celular o la página de error.</li>
+    </ul>
+    <div class="cmp">
+      <div class="tabs" role="tablist" aria-label="Capturas de Alas Celestiales"><button type="button" role="tab" id="t-0" aria-controls="p-0" aria-selected="true" tabindex="0">Portada</button><button type="button" role="tab" id="t-1" aria-controls="p-1" aria-selected="false" tabindex="-1">Oración del día</button><button type="button" role="tab" id="t-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Bloque de oración</button><button type="button" role="tab" id="t-3" aria-controls="p-3" aria-selected="false" tabindex="-1">Buscador</button></div>
+      <div class="cmp-panel" role="tabpanel" id="p-0" aria-labelledby="t-0"><div class="ac-shot"><img src="img/casos/ac-hero.webp" width="1280" height="800" alt="Portada de Alas Celestiales: título en serif sobre fondo oscuro con partículas doradas"></div><p class="cap">Portada: partículas doradas en canvas y un haz de luz</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-1" aria-labelledby="t-1" hidden><div class="ac-shot"><img loading="lazy" src="img/casos/ac-dia.webp" width="1280" height="722" alt="Sección Oración del día con la fecha, la categoría y la oración en un recuadro"></div><p class="cap">Oración del día: cambia sola cada día, aunque el sitio sea estático</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-2" aria-labelledby="t-2" hidden><div class="ac-shot"><img loading="lazy" src="img/casos/ac-oracion.webp" width="840" height="809" alt="Oración a Santa Rita en un recuadro propio con los botones Copiar oración e Imprimir"></div><p class="cap">Bloque de oración, detectado automáticamente, con Copiar e Imprimir</p></div>
+      <div class="cmp-panel" role="tabpanel" id="p-3" aria-labelledby="t-3" hidden><div class="ac-shot"><img loading="lazy" src="img/casos/ac-buscador.webp" width="1280" height="462" alt="Buscador en vivo mostrando oraciones a San Miguel Arcángel con imagen y categoría"></div><p class="cap">Buscador en vivo: resultados mientras escribís, sin servidor</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="demanda">
+  <div class="num">06 · Contenido guiado por la demanda</div>
+  <div class="prose">
+    <h2>Escribir lo que la gente ya está buscando</h2>
+    <p>Antes de escribir, medí qué se busca: las sugerencias del autocompletado de Google en cuatro países. Con eso armé tandas de contenido nuevo y mejoré publicaciones que ya tenían potencial.</p>
+  </div>
+  <div class="demand" role="list">
+    <div role="listitem"><b>1.155</b><span>sugerencias de búsqueda en 4 países</span></div>
+    <div role="listitem"><b>3</b><span>tandas de contenido publicadas</span></div>
+    <div role="listitem"><b>161 → 212</b><span>oraciones en el sitio</span></div>
+    <div role="listitem"><b>814 → 1.321</b><span>palabras en la oración a San Miguel, optimizada</span></div>
+  </div>
+  <div class="bugs">
+    <div class="bug"><div><h3>Tanda 1</h3><p><b>4 oraciones nuevas</b> con demanda medida.</p></div><div><h3>Qué se publicó</h3><p>Santa Marta, San Benito, para el trabajo y para los enfermos, con una subcategoría nueva para San Benito.</p></div></div>
+    <div class="bug"><div><h3>Tanda 2</h3><p><b>5 publicaciones y 25 oraciones</b> nuevas.</p></div><div><h3>Qué se publicó</h3><p>Santa Rita de Casia, oración de la mañana, de la noche, para que todo salga bien y para regresar el mal. Cada una ilustrada con una pintura clásica, con su obra y autor.</p></div></div>
+    <div class="bug"><div><h3>Tanda 3</h3><p><b>Optimizar lo que ya funcionaba.</b></p></div><div><h3>Qué se hizo</h3><p>La oración a San Miguel, orientada a su búsqueda más fuerte, con secciones nuevas y preguntas frecuentes; otra publicación reforzada de 384 a 937 palabras, y una nueva.</p></div></div>
+    <div class="bug"><div><h3>Calidad</h3><p><b>Menos, pero mejor.</b></p></div><div><h3>Decisión</h3><p>Se borraron 13 borradores viejos de baja calidad que repetían temas ya publicados.</p></div></div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="num">07 · Proceso</div>
+  <div class="prose">
+    <h2>Por etapas, con copia de seguridad antes de cada una</h2>
+    <ol class="timeline">
+      <li><span class="dot">1</span><b>Tema propio desde cero</b><span class="t">Se probó el 3D, se descartó y se llegó a las partículas doradas.</span></li>
+      <li><span class="dot">2</span><b>Categorías y navegación</b><span class="t">5 grupos, menú nuevo, página de error y paginación.</span></li>
+      <li><span class="dot">3</span><b>La página de cada oración</b><span class="t">Bloques con Copiar e Imprimir, tiempo de lectura, anterior y siguiente, y relacionadas.</span></li>
+      <li><span class="dot">4</span><b>SEO, páginas y accesibilidad</b><span class="t">SEO propio, páginas legales, saltar al contenido, foco visible y reducir movimiento.</span></li>
+      <li><span class="dot">5</span><b>Buscador en vivo y oración del día</b><span class="t">Las dos funcionan sin servidor.</span></li>
+      <li><span class="dot">6</span><b>Tres tandas de contenido</b><span class="t">A partir del análisis de 1.155 búsquedas.</span></li>
+      <li><span class="dot">7</span><b>Revisión final y publicación</b><span class="t">Imágenes, títulos y celular revisados; exportado a HTML estático en Netlify.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="problemas">
+  <div class="num">08 · Problemas resueltos</div>
+  <div class="prose">
+    <h2>Lo que apareció en el camino</h2>
+  </div>
+  <div class="bugs">
+    <div class="bug"><div><h3>Problema</h3><p><b>El menú mostraba todas las categorías viejas</b>, una lista enorme.</p></div><div><h3>Solución</h3><p>Links fijos a los 5 grupos, con cada santo dentro de su grupo.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Los cambios de diseño no se veían</b>: un plugin de caché seguía sirviendo estilos viejos.</p></div><div><h3>Solución</h3><p>Lo desactivé; el tema ya carga solo lo que necesita.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>790 contenidos tenían imágenes</b> con una dirección que no cargaba.</p></div><div><h3>Solución</h3><p>Las corregí todas de una vez en la base de datos, con copia de seguridad previa.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>28 títulos se veían rotos</b>, con símbolos sueltos heredados.</p></div><div><h3>Solución</h3><p>El tema los limpia al mostrarlos, sin tocar lo guardado.</p></div></div>
+    <div class="bug"><div><h3>Problema</h3><p><b>Textos con voseo</b> para un público de toda Latinoamérica.</p></div><div><h3>Solución</h3><p>Pasados a tuteo en todo el tema: «Descubre», «Sigue orando», «Prueba».</p></div></div>
+  </div>
+</section>
+
+<section id="antes-despues">
+  <div class="num">09 · Antes y después</div>
+  <div class="prose">
+    <h2>Las mismas oraciones, otra experiencia</h2>
+    <p class="soft">Arrastrá cada captura para comparar.</p>
+  </div>
+  <div class="cmp">
+    <div class="tabs" role="tablist" aria-label="Antes y después de Alas Celestiales"><button type="button" role="tab" id="u-0" aria-controls="q-0" aria-selected="true" tabindex="0">Una oración</button><button type="button" role="tab" id="u-1" aria-controls="q-1" aria-selected="false" tabindex="-1">Lista de oraciones</button><button type="button" role="tab" id="u-2" aria-controls="q-2" aria-selected="false" tabindex="-1">En celular</button></div>
+    <div class="cmp-panel" role="tabpanel" id="q-0" aria-labelledby="u-0"><div class="stage"><img loading="lazy" src="img/cmp/alas-oracion-despues.webp" alt="Oración a San Rafael para la salud después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/alas-oracion-antes.webp" alt="Oración a San Rafael para la salud antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: una oración"></div><p class="cap">«Oración a San Rafael para la salud»</p></div>
+    <div class="cmp-panel" role="tabpanel" id="q-1" aria-labelledby="u-1" hidden><div class="stage"><img loading="lazy" src="img/cmp/alas-lista-despues.webp" alt="Listado de oraciones después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/alas-lista-antes.webp" alt="Listado de oraciones antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: lista de oraciones"></div><p class="cap">El listado de oraciones</p></div>
+    <div class="cmp-panel mob" role="tabpanel" id="q-2" aria-labelledby="u-2" hidden><div class="stage"><img loading="lazy" src="img/cmp/alas-movil-despues.webp" alt="La misma oración en celular después del rediseño"><div class="clip"><img loading="lazy" src="img/cmp/alas-movil-antes.webp" alt="La misma oración en celular antes del rediseño"></div><span class="lbl l-b">ANTES</span><span class="lbl l-a">DESPUÉS</span><span class="bar" aria-hidden="true"><i>⇆</i></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes y después: en celular"></div><p class="cap">La misma oración en celular</p></div>
+  </div>
+</section>
+
+<section id="resultados">
+  <div class="num">10 · Resultados</div>
+  <div class="prose">
+    <h2>Lo que se midió</h2>
+  </div>
+  <div class="results" style="grid-template-columns:1fr;">
+    <div class="res-box">
+      <h3>Medido</h3>
+      <ul>
+        <li><b>117 publicaciones</b> con tema propio y las mismas URLs de siempre.</li>
+        <li><b>212 oraciones en 64 publicaciones</b> con Copiar e Imprimir, detectadas automáticamente.</li>
+        <li><b>Sitio estático:</b> el buscador en vivo y la oración del día funcionan sin servidor.</li>
+        <li><b>Revisado en celular</b> (iPhone 13 emulado): sin desbordes en portada, oraciones, categorías ni menú.</li>
+      </ul>
+      <p style="margin:18px 0 0;"><b>Lighthouse de la portada en vivo</b></p>
+      <div class="lh" style="grid-template-columns:repeat(3,1fr);">
+        <div><b>93</b><span>Rendimiento en escritorio</span></div>
+        <div><b>100</b><span>Accesibilidad</span></div>
+        <div><b>100</b><span>Buenas prácticas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="num">11 · Stack</div>
+  <div class="stack-groups">
+    <div><h3>Plataforma</h3><div class="stack"><span>WordPress</span><span>PHP</span><span>MySQL</span><span>JSON-LD</span></div></div>
+    <div><h3>Interfaz</h3><div class="stack"><span>JavaScript</span><span>Canvas</span><span>CSS</span><span>Accesibilidad</span></div></div>
+    <div><h3>Herramientas</h3><div class="stack"><span>WP-CLI</span><span>Playwright</span><span>Netlify</span><span>Claude Code</span></div></div>
+  </div>
+</section>
+
+<div class="cta">
+  <div>
+    <h2>¿Querés un sitio con identidad propia?</h2>
+    <p>Diseño que transmite lo que hacés y contenido pensado para lo que la gente busca.</p>
+  </div>
+  <div class="hero-cta">
+    <a class="btn primary" href="https://wa.me/5493815816019?text=Hola%20Leonel%2C%20vi%20tu%20caso%20de%20Alas%20Celestiales.%20Quiero%20un%20sitio%20con%20identidad%20propia." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zM8.6 7.5c-.3 0-.6.1-.8.4-.5.6-.9 1.4-.6 2.4.4 1.4 1.7 3.2 3.4 4.5 1.8 1.3 3.3 1.8 4.4 1.4.9-.3 1.4-1.2 1.3-1.6l-.1-.3-1.9-.9c-.3-.1-.5 0-.7.2l-.6.7c-.1.1-.3.2-.5.1-1-.4-2.4-1.5-3-2.7-.1-.2 0-.4.1-.5l.5-.6c.2-.2.2-.4.1-.6l-.8-1.9c-.1-.3-.4-.5-.7-.5z"/></svg>Escribime por WhatsApp</a>
+    <a class="btn ghost" href="https://alascelestiales.netlify.app/" target="_blank" rel="noopener">Ver el sitio en vivo</a>
+  </div>
+</div>
+
+<nav class="next-case" aria-label="Más casos">
+  <a href="caso-drivecalmly.html">← Caso anterior: Drivecalmly</a>
+  <a href="index.html#recuperados">Volver al portfolio →</a>
+</nav>
+</div>
+</main>
+
+<footer class="end"><div class="wrap">Leonel Zalazar — Desarrollo web &amp; SEO técnico · Tucumán, Argentina</div></footer>
+<script src="caso.js" defer></script>
+</body></html>
